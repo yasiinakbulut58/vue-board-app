@@ -31,8 +31,8 @@ export const data = {
       id: "To-Do",
       type: "container",
       name: "To-Do",
-      edit: false,
-      editValue: '',
+      add: false,
+      addValue: '',
       children: [
         {
           type: "draggable",
@@ -70,8 +70,8 @@ export const data = {
       id: "Doing",
       type: "container",
       name: "Doing",
-      edit: false,
-      editValue: '',
+      add: false,
+      addValue: '',
       children: [
         {
           type: "draggable",
@@ -110,8 +110,8 @@ export const data = {
       id: "Staging",
       type: "container",
       name: "Staging",
-      edit: false,
-      editValue: '',
+      add: false,
+      addValue: '',
       children: [
         {
           type: "draggable",
@@ -149,8 +149,8 @@ export const data = {
       id: "Prod",
       type: "container",
       name: "Prod",
-      edit: false,
-      editValue: '',
+      add: false,
+      addValue: '',
       children: [
         {
           type: "draggable",

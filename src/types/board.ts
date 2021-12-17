@@ -7,8 +7,8 @@ export interface Column {
   id: string,
   type: string,
   name: string,
-  edit: boolean,
-  editValue: string,
+  add: boolean,
+  addValue: string,
   children: Card[]
 }
 
