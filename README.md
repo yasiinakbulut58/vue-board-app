@@ -1,5 +1,13 @@
 # vue-app
 
+## Tech
+```
+Vue.js 2
+Typescript
+Less
+
+Kanban Libary - Vue-smooth-dnd
+
 ## Project setup
 ```
 npm install
