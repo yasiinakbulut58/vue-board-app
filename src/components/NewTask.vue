@@ -28,8 +28,7 @@
                     description: column.addValue,
                     avatar: 'https://i.pravatar.cc/300',
                   },
-                });
-                column.addValue = '';
+                })
               "
               :disabled="!column.addValue"
             >

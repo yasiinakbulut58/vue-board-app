@@ -24,7 +24,7 @@
             <Draggable v-for="(card, index) in column.children" :key="card.id">
               <Task
                 :card="card"
-                @onDelete="column.children.splice(index, 1)"
+                @onDelete="onDelete(index, column.children)"
                 @onUpdate="onUpdate($event, card)"
               ></Task>
             </Draggable>
@@ -33,10 +33,7 @@
             :ref="`form${column.id}`"
             :column="column"
             @onCancel="column.add = false"
-            @onAdd="
-              onAdd($event, column.children);
-              column.add = false;
-            "
+            @onAdd="onAdd($event, column)"
           ></NewTask>
         </div>
       </Draggable>
@@ -132,15 +129,23 @@ export default Vue.extend({
         ];
       };
     },
+    onDelete(index: number, cards: Card[]): void {
+      cards.splice(index, 1);
+      setBoardData(JSON.stringify(this.scene));
+    },
     onUpdate(desc: string, card: Card): void {
       card.data.description = desc;
       setBoardData(JSON.stringify(this.scene));
     },
     onAdd(newTask: Card, tasks: Column): void {
-      tasks.push(newTask);
+      tasks.children.push(newTask);
+      tasks.add = false;
+      tasks.addValue = "";
+      setBoardData(JSON.stringify(this.scene));
     },
     onAddList(newList: Column, list: Board): void {
       list.push(newList);
+      setBoardData(JSON.stringify(this.scene));
     },
     openForm(column: Column, name: string): void {
       column.add = !column.add;
