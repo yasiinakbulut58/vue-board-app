@@ -1,7 +1,15 @@
 <template>
   <div class="card">
     <div class="body">
-      <span class="description">
+      <textarea
+        v-if="showEdit"
+        v-model="description"
+        rows="3"
+        placeholder="Update Task"
+        ref="editTask"
+        name="description"
+      ></textarea>
+      <span v-else class="description">
         {{ card.data.description }}
       </span>
       <div class="dropdown">
@@ -19,7 +27,16 @@
         </svg>
         <div class="dropdown-content">
           <span @click="$emit('onDelete')">Delete</span>
-          <span>Edit</span>
+          <span
+            @click="
+              description = card.data.description;
+              showEdit = true;
+              $nextTick(() => {
+                $refs.editTask.focus();
+              });
+            "
+            >Edit</span
+          >
         </div>
       </div>
     </div>
@@ -28,7 +45,23 @@
         <img class="avatar" :src="card.data.avatar" alt="Avatar" />
         <span class="username">{{ card.data.name }}</span>
       </div>
-      <span class="date">{{ card.data.createTime }}</span>
+      <div v-if="showEdit" class="actions">
+        <button
+          type="button"
+          class="add"
+          @click="
+            $emit('onUpdate', description);
+            showEdit = false;
+          "
+          :disabled="!description"
+        >
+          Update
+        </button>
+        <button type="button" class="cancel" @click="showEdit = false">
+          Cancel
+        </button>
+      </div>
+      <span v-else class="date">{{ card.data.createTime }}</span>
     </div>
   </div>
 </template>
@@ -42,6 +75,12 @@ export default Vue.extend({
   name: "Card",
   props: {
     card: Object as PropType<Card>,
+  },
+  data() {
+    return {
+      showEdit: false,
+      description: "",
+    };
   },
 });
 </script>

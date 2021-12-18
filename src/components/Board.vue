@@ -25,6 +25,7 @@
               <Task
                 :card="card"
                 @onDelete="column.children.splice(index, 1)"
+                @onUpdate="onUpdate($event, card)"
               ></Task>
             </Draggable>
           </Container>
@@ -32,7 +33,10 @@
             :ref="`form${column.id}`"
             :column="column"
             @onCancel="column.add = false"
-            @onAdd="onAdd($event, column.children)"
+            @onAdd="
+              onAdd($event, column.children);
+              column.add = false;
+            "
           ></NewTask>
         </div>
       </Draggable>
@@ -128,6 +132,10 @@ export default Vue.extend({
         ];
       };
     },
+    onUpdate(desc: string, card: Card): void {
+      card.data.description = desc;
+      setBoardData(JSON.stringify(this.scene));
+    },
     onAdd(newTask: Card, tasks: Column): void {
       tasks.push(newTask);
     },
@@ -138,6 +146,7 @@ export default Vue.extend({
       column.add = !column.add;
       this.$nextTick(() => {
         if (column.add) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const form = this.$refs[name] as any;
           if (form) {
             form[0].$refs.newTask.focus();
