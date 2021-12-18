@@ -7,7 +7,7 @@ Typescript
 Less
 ```
 
-Kanban Libary - Vue-smooth-dnd
+This app is developed by using Vue-smooth-dnd, all changes are being saved to local storage.
 
 Demo: https://vue-kanban-app-4ru9j6qxa-yasiinakbulut58.vercel.app/
 
