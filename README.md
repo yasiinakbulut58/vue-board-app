@@ -9,6 +9,8 @@ Less
 
 Kanban Libary - Vue-smooth-dnd
 
+Demo: https://vue-kanban-app-4ru9j6qxa-yasiinakbulut58.vercel.app/
+
 ## Project setup
 ```
 npm install
