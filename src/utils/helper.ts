@@ -1,8 +1,8 @@
-import { Card } from '../types/board'
+import { Card } from "../types/board";
 
 export const applyDrag = (
   arr: Card[] | any,
-  dragResult: { removedIndex: number; addedIndex: number; payload: Card}
+  dragResult: { removedIndex: number; addedIndex: number; payload: Card }
 ): Card[] | any => {
   const { removedIndex, addedIndex, payload } = dragResult;
   if (removedIndex === null && addedIndex === null) return arr;
@@ -17,12 +17,13 @@ export const applyDrag = (
   return result;
 };
 
-const cacheKey = 'board-data';
+const cacheKey = "board-data";
 export const getBoardData = (): string | null => {
   const storageData = localStorage.getItem(cacheKey);
   return storageData ? JSON.parse(storageData) : null;
 };
-export const setBoardData = (data: string): void => localStorage.setItem(cacheKey, data);
+export const setBoardData = (data: string): void =>
+  localStorage.setItem(cacheKey, data);
 
 export const data = {
   type: "container",
@@ -32,7 +33,7 @@ export const data = {
       type: "container",
       name: "To-Do",
       add: false,
-      addValue: '',
+      addValue: "",
       children: [
         {
           type: "draggable",
@@ -71,7 +72,7 @@ export const data = {
       type: "container",
       name: "Doing",
       add: false,
-      addValue: '',
+      addValue: "",
       children: [
         {
           type: "draggable",
@@ -111,7 +112,7 @@ export const data = {
       type: "container",
       name: "Staging",
       add: false,
-      addValue: '',
+      addValue: "",
       children: [
         {
           type: "draggable",
@@ -150,7 +151,7 @@ export const data = {
       type: "container",
       name: "Prod",
       add: false,
-      addValue: '',
+      addValue: "",
       children: [
         {
           type: "draggable",
@@ -186,4 +187,3 @@ export const data = {
     },
   ],
 };
-

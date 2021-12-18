@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
-import './assets/style/app.less';
+import "./assets/style/app.less";
 
 Vue.config.productionTip = false;
 
