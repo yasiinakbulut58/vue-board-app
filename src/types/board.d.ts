@@ -4,6 +4,7 @@ export interface Board {
 }
 
 export interface Column {
+  push(newTask: Card);
   id: string,
   type: string,
   name: string,
